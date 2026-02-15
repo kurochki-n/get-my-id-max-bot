@@ -33,3 +33,5 @@ go.work.sum
 .claude/
 *.log
 generated_files/
+
+.ssh
