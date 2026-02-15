@@ -1,4 +1,4 @@
-module get-my-id-max-bot
+module github.com/kurochki-n/get-my-id-max-bot
 
 go 1.25.6
 
