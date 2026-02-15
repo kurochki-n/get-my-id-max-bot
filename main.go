@@ -55,7 +55,7 @@ func main() {
 			}
 		}
 		log.Printf(
-			"Update from user %d handeled in %d milliseconds",
+			"Update from user %d handled in %d milliseconds",
 			upd.GetUserID(),
 			time.Now().UnixMilli()-timestamp,
 		)
