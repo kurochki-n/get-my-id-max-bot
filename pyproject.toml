@@ -1,0 +1,11 @@
+[project]
+name = "get-my-id-max-bot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "maxapi>=0.9.16",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.13.1",
+]
