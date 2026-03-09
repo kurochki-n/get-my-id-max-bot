@@ -28,7 +28,7 @@ async def bot_started(event: BotStarted):
 @dp.message_created()
 async def message_handler(event: MessageCreated):
     """Отвтет бота на любое сообщение."""
-    await event.message.answer(event.user.user_id)
+    await event.message.answer(event.from_user.user_id)
 
 
 async def main():
