@@ -21,14 +21,22 @@ async def bot_started(event: BotStarted):
     """Ответ бота при нажатии на кнопку `Начать`."""
     await event.bot.send_message(
         chat_id=event.chat_id,
-        text=f"user_id: <code>{event.user.user_id}</code>"
+        text=(
+            f"user_id: <code>{event.user.user_id}</code>\n"
+            f"chat_id: <code>{event.chat.chat_id}</code>"
+        )
     )
 
 
 @dp.message_created()
 async def message_handler(event: MessageCreated):
     """Отвтет бота на любое сообщение."""
-    await event.message.answer(f"user_id: <code>{event.from_user.user_id}</code>")
+    await event.message.answer(
+        text=(
+            f"user_id: <code>{event.from_user.user_id}</code>\n"
+            f"chat_id: <code>{event.chat.chat_id}</code>"
+        )
+    )
 
 
 async def main():
