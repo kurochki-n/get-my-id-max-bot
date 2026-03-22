@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from maxapi import Bot, Dispatcher
-from maxapi.types import BotStarted, Command, MessageCreated
+from maxapi.types import BotStarted, BotAdded, MessageCreated
 from maxapi.enums.parse_mode import ParseMode
 
 from config_reader import config
@@ -17,7 +17,7 @@ dp = Dispatcher()
 
 
 @dp.bot_started()
-async def bot_started(event: BotStarted):
+async def bot_started(event: BotStarted) -> None:
     """Ответ бота при нажатии на кнопку `Начать`."""
     await event.bot.send_message(
         chat_id=event.chat_id,
@@ -28,8 +28,17 @@ async def bot_started(event: BotStarted):
     )
 
 
+@dp.bot_added()
+async def bot_added(event: BotAdded) -> None:
+    """Ответ бота при добавлении в чат."""
+    await event.bot.send_message(
+        chat_id=event.chat_id,
+        text=f"chat_id: {event.chat_id}"
+    )
+
+
 @dp.message_created()
-async def message_handler(event: MessageCreated):
+async def message_handler(event: MessageCreated) -> None:
     """Отвтет бота на любое сообщение."""
     await event.message.answer(
         text=(
@@ -39,7 +48,7 @@ async def message_handler(event: MessageCreated):
     )
 
 
-async def main():
+async def main() -> None:
     await bot.delete_webhook()
     await dp.start_polling(bot, skip_updates=True)
 
