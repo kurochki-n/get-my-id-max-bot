@@ -33,7 +33,7 @@ async def bot_added(event: BotAdded) -> None:
     """Ответ бота при добавлении в чат."""
     await event.bot.send_message(
         chat_id=event.chat_id,
-        text=f"chat_id: {event.chat_id}"
+        text=f"chat_id: <code>{event.chat_id}</code>"
     )
 
 
